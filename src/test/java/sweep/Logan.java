@@ -15,8 +15,8 @@ public class Logan {
 		WebDriver driver = new ChromeDriver();
 
 		try {
-			driver.get("http://103.175.163.92:8025/view-all-games?category=3"); // <-- replace with your site
-			Thread.sleep(30000); // wait for page to load
+			driver.get("https://www.miragecoins.com/view-all-games?category=3"); // <-- replace with your site
+			Thread.sleep(10000); // wait for page to load
 
 			// Keep clicking "Load More" until it's gone
 			while (true) {
