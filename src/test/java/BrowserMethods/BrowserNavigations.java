@@ -57,6 +57,8 @@ public class BrowserNavigations
 		
 		System.out.println("After refresh...");
 		
+		System.out.println("Just for git");
+		
 		
 		//Set <String> windowids = driver.getWindowHandles();
 		//System.out.println(windowids);
