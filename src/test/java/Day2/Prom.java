@@ -23,8 +23,7 @@ public class Prom {
 		
 		     String foo =  driver.getWindowHandle();
 		
-		System.out.println("Test 1 ....");
-		System.out.println(foo);
+		driver.quit();
 	}
 
 }
