@@ -4,7 +4,9 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,9 +16,9 @@ public class FrameTest
 	public static void main(String[] args) throws InterruptedException 
 	{
 		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 	    
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		
 		driver.manage().window().maximize();
 		
@@ -34,24 +36,19 @@ public class FrameTest
 		//Open Game
 		System.out.println("Before");
 		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@src='https://thumbs.alea.com/e84b255f_pascal-gaming_777-poker_300x400.webp']"))).click();
-		System.out.println("clicked");
+		 WebElement gamecard=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@src='https://thumbs.alea.com/9a1b587f_pascal-gaming_aviabet_300x400.webp']")));
+		System.out.println("Found..");
+		Actions actions = new Actions(driver);
+		actions.moveToElement(gamecard).perform();
 		
-		// Always return to parent
-		driver.switchTo().defaultContent();
-
-		// Wait for page to stabilize
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-
-		// Switch safely to i frame
-		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe[name='casino-iframe']")));	
-		System.out.println("Switched");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//h4[contains(text(),'Play Now')])[1]"))).click();
 		
-		driver.findElement(By.xpath("//div[@class='main-button']")).click();
+		driver.switchTo().frame("casino-iframe");
 		
 		
 		
-		driver.quit();
+		
+		
 		
 		
 			
