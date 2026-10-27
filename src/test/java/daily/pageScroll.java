@@ -19,8 +19,18 @@ public class pageScroll
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		
-		js.executeScript("window.scrollBy(0,500)");
+		// for scrolling by pixels 
+		js.executeScript("window.scrollBy(0,500)"); 
+		System.out.println("Scrolled throught Pixels...");
 		
+		// if you want to scroll till bottom of the page then use below
+		
+		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+		System.out.println("Scrolled till footer..");
+		
+		
+		
+		driver.quit();
 		
 	}
 	
