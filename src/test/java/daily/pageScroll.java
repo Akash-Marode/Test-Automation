@@ -6,31 +6,32 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class pageScroll 
+class pageScroll 
 {
-	public static void main (String [] args)
+	public static void main (String [] args) throws InterruptedException
 	{
 		WebDriver driver = new ChromeDriver();
 		
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 		driver.get("https://tutorialsninja.com/demo/");
 		
+		//create Java script object
+		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		
-		// for scrolling by pixels 
-		js.executeScript("window.scrollBy(0,500)"); 
-		System.out.println("Scrolled throught Pixels...");
-		
-		// if you want to scroll till bottom of the page then use below
+		//scroll by pixels
+		js.executeScript("window.scrollBy(0,700)");
+		System.out.println("Scrolled by pixels");
+		Thread.sleep(3000);
+		//scroll till footer
 		
 		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
-		System.out.println("Scrolled till footer..");
-		
-		
+		System.out.println("Scroll till footer");
+		Thread.sleep(2000);
 		
 		driver.quit();
+		
 		
 	}
 	
